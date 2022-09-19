@@ -47,8 +47,9 @@
             <!-- As we are having todo array in data services and getTodo() in todos compoenents we can access that array from component here -->
             <!-- so basically we are taking array of todos and assigning to [todo] which was declared in todo-item component -->
 
-            <!-- ItemEventCalled was defined in todo-item component which was output event emitter which is called by onItemClick when an item is clicked-->
-            <app-todo-item *ngFor="let todo of todos" [todo]="todo" (ItemEventCall)="setCompleted(todo)">
+            <!-- ItemEventCall was defined in todo-item component which was output event emitter which is called by onItemClick when an item is clicked-->
+            <!-- so this ItemEventCall will initiate setCompleted function in todo html which will called in todo component which will toggle completed and incomplete state of task -->
+            <app-todo-item *ngFor="let todo of todos" [todo]="todo" (ItemEventCall)="setCompleted(todo)" (editEventCall)="editTask(todo)" (deleteEventCall)="deleteTask(todo)">
 
             </app-todo-item>
         </div>
