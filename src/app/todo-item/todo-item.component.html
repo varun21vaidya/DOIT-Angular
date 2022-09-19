@@ -1,3 +1,4 @@
+<!-- ItemEventCalled was defined in todo-item component which was output event emitter which is called by onItemClick when an item is clicked -->
 <div class="todo-item" (click)="onItemClick()" [class.completed]="todo.completed">
     <div class="check-box">
         <span class="material-icons">
@@ -12,16 +13,26 @@
     <!-- when edit and delete are clicked as they are part of todo item
     main onItemclick is initiated and complete status is changed 
     so an additional onclick event is created to avoid that -->
+
     <div class="todo-control-box" (click)="$event.stopPropagation()">
-        <div class="todo-control-button">
+        <div class="todo-control-button" (click)="onEditClick()">
             <span class="material-icons">
                 edit
             </span>
         </div>
+
+
+
+        <!-- // deleteEventCall was defined in todo-item component which was output event emitter which is called by onDeleteClick when an item is clicked
+        // so this deleteEventCall will initiate deleteTask function in todo html
+        // which will called in todo component which will delete following task -->
+
         <div class="todo-control-button is-danger" (click)="$event.stopPropagation()">
-            <span class="material-icons">
-                delete
-            </span>
+            <div class="todo-control-button" (click)="onDeleteClick()">
+                <span class="material-icons">
+                    delete
+                </span>
+            </div>
         </div>
     </div>
 </div>

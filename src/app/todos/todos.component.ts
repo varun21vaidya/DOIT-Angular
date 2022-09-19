@@ -27,6 +27,9 @@ export class TodosComponent implements OnInit {
     // console.log(form);
   }
 
+  // ItemEventCalled was defined in todo-item component which was output event emitter which is called by onItemClick when an item is clicked
+  // so this ItemEventCall will initiate setCompleted function in todo html
+  // which will called in todo component which will toggle completed and incomplete state of task
   setCompleted(todo: Todo) {
     // alert('todo was clicked');
 
@@ -34,5 +37,20 @@ export class TodosComponent implements OnInit {
     // but also ensure if its already completed mark it as not complete
     // so we will use not operator to inverse current conditions
     todo.completed = !todo.completed;
+  }
+
+  editTask(todo: Todo) {
+    //   // first get index of todo
+    //   // then user will enter new info
+    //   const index= this.todos.indexOf(todo)
+    //   this.dataservice.updateTodo(index,todo)
+  }
+
+  // deleteEventCall was defined in todo-item component which was output event emitter which is called by onDeleteClick when an item is clicked
+  // so this deleteEventCall will initiate deleteTask function in todo html
+  // which will called in todo component which will delete following task
+  deleteTask(todo: Todo) {
+    const index = this.todos.indexOf(todo);
+    this.dataservice.deleteTodo(index);
   }
 }
