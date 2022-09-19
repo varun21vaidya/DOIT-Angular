@@ -1,0 +1,27 @@
+.heading-section{
+    
+    background: linear-gradient(90deg, rgb(156, 233, 252), rgba(110,123,251,1) );
+    padding: 80px; //do 80px *******
+
+
+    h1.title{
+        font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(black,0.4);
+    }
+}
+
+.contain {
+    max-width: 800px;
+    margin:auto;
+    position:relative;
+}
+
+
+.add-todo-box{
+    padding:25px;
+    border-radius: 4px;
+    margin-top: -30px;
+    background: white;
+    box-shadow: 0 4px 12px(rgba(black,0.2));
+}

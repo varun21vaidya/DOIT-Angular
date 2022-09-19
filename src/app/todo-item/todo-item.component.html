@@ -1,0 +1,27 @@
+<div class="todo-item" (click)="onItemClick()" [class.completed]="todo.completed">
+    <div class="check-box">
+        <span class="material-icons">
+            done
+        </span>
+    </div>
+    <div class="todo-text">
+        {{todo.text}}
+    </div>
+    <!-- div for controls like edit and delete -->
+
+    <!-- when edit and delete are clicked as they are part of todo item
+    main onItemclick is initiated and complete status is changed 
+    so an additional onclick event is created to avoid that -->
+    <div class="todo-control-box" (click)="$event.stopPropagation()">
+        <div class="todo-control-button">
+            <span class="material-icons">
+                edit
+            </span>
+        </div>
+        <div class="todo-control-button is-danger" (click)="$event.stopPropagation()">
+            <span class="material-icons">
+                delete
+            </span>
+        </div>
+    </div>
+</div>

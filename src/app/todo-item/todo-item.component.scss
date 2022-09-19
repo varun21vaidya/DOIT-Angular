@@ -1,0 +1,107 @@
+
+.todo-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 35px 15px;
+    border-bottom: 1px solid rgba(93, 93, 93, 0.215);
+    cursor: pointer;
+    .check-box{
+        display: flex;
+        flex-shrink: 0;
+        margin-top: 4px;
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 1px;
+        border-color: lightblue;
+        height: 25px;
+        width: 25px;
+        margin-right: 10px;
+        .material-icons{
+            opacity: 0;
+            font-size: 20px;
+            margin: auto;
+        }
+        
+    }
+    
+    .todo-text{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+}
+
+// when you hover over task, check mark appears
+.todo-item:hover:not(.completed){
+    .check-box{
+        .material-icons{
+            opacity: 0.5;
+            background: #eee;
+            transition: opacity(0.2s);
+            transition: background(0.2s);
+
+        }
+    }
+}
+
+// when task is completed, text opacity reduces and checkbox fills
+.todo-item.completed{
+    .todo-text{
+        opacity:0.5;
+        text-decoration: line-through;
+    }
+    .check-box{
+        background: rgb(11,223,170);
+        .material-icons{
+            opacity:1;
+        }
+    }
+}
+
+
+// for edit and delete buttons
+
+.todo-item .todo-control-box {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 0;
+
+
+    .todo-control-button{
+        padding: 7px 10px;
+        border-radius: 5px;
+        display: flex;
+        .material-icons{
+            font-size: 20px;
+        }
+    }
+
+    // by default it will be hidden but only show on hovering on task
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: visibility 0.2s, trasform 0.2s, opacity 0.2s;
+}
+
+.todo-item .todo-control-box .todo-control-button:hover{
+    background-color: #eee;
+}
+
+.todo-item .todo-control-box .todo-control-button:active{
+    background-color: #d9dada;
+}
+
+// when clicked on delete it will show red color
+.todo-item .todo-control-box .todo-control-button.is-danger:hover {
+    .material-icons{
+        color: red;
+    }
+}
+
+.todo-item:hover .todo-control-box{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0);
+}

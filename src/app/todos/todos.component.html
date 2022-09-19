@@ -1,0 +1,56 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+<section class="heading-section">
+    <h1 class="title is-1 has-text-centered">DO IT</h1>
+</section>
+
+
+<div class="contain">
+    <div class="add-todo-box">
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+            <h2 class="title is-5">New Todo</h2>
+
+            <div class="field is-grouped">
+                <p class="control is-expanded">
+                    <!-- ngModel has various form validations such as required , minlength and
+                        its name takes input value which will be used in component
+                        we will also asign an Id to it to take values of ngModel to handel erros with ngIf -->
+                    <input ngModel #todotextfield="ngModel" required minlength="2" name="text" class="input" type="text"
+                        placeholder="Lets Add Your Task ...">
+                </p>
+                <p class="control">
+                    <button type="submit" class="button is-link special-button">
+                        <span class="material-icons">
+                            add
+                        </span> ADD
+                    </button>
+                </p>
+            </div>
+
+            <!-- this will take errors from ngModel Id and validate form with ngIf -->
+            <div *ngIf="form?.touched && form?.invalid">
+                <p class=" help is-danger" *ngIf="form.controls['text'].errors?.['required']">Please Enter Task to Add
+                </p>
+                <p class="help is-danger" *ngIf="form.controls['text'].errors?.['minlength']">Todo Task must be atleast
+                    2 characters</p>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<section class="section">
+    <div class="contain">
+        <div class="todo-list">
+            <!-- As we are having todo array in data services and getTodo() in todos compoenents we can access that array from component here -->
+            <!-- so basically we are taking array of todos and assigning to [todo] which was declared in todo-item component -->
+
+            <!-- ItemEventCalled was defined in todo-item component which was output event emitter which is called by onItemClick when an item is clicked-->
+            <app-todo-item *ngFor="let todo of todos" [todo]="todo" (ItemEventCall)="setCompleted(todo)">
+
+            </app-todo-item>
+        </div>
+    </div>
+</section>
