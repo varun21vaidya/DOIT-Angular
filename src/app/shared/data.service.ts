@@ -5,13 +5,10 @@ import { Todo } from './todo.model';
   providedIn: 'root',
 })
 export class DataService {
+  todos: Todo[] = localStorage.getItem('datakey')
+    ? JSON.parse(localStorage.getItem('datakey') || '[]')
+    : [];
   // property to contain todos
-  todos: Todo[] = [
-    new Todo('This is a test',true),
-    new Todo(
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt tempore tempora aut repudiandae facere. Aliquam alias rerum, hic rem cum sunt? Maiores, beatae! Sequi iste eum, porro dolor sed hic?'
-    ),
-  ];
   constructor() {}
 
   getTodo() {
@@ -20,11 +17,14 @@ export class DataService {
 
   addTodo(todo: Todo) {
     this.todos.push(todo);
+    localStorage.setItem('datakey', JSON.stringify(this.todos));
   }
   updateTodo(ind: number, todo: Todo) {
     this.todos[ind] = todo;
+    localStorage.setItem('datakey', JSON.stringify(this.todos));
   }
   deleteTodo(ind: number) {
     this.todos.splice(ind, 1);
+    localStorage.setItem('datakey', JSON.stringify(this.todos));
   }
 }

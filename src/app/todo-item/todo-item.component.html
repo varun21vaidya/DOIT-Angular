@@ -15,7 +15,7 @@
     so an additional onclick event is created to avoid that -->
 
     <div class="todo-control-box" (click)="$event.stopPropagation()">
-        <div class="todo-control-button" (click)="onEditClick()">
+        <div class="todo-control-button" (click)="onEditClick()" id="editbutton">
             <span class="material-icons">
                 edit
             </span>
