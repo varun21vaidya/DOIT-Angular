@@ -110,3 +110,11 @@
     opacity: 1;
     transform: translate(0);
 }
+
+@media only screen and (max-width: 400px){
+    .todo-item .todo-control-box{
+        visibility: visible;
+        opacity: 1;
+    }
+
+}
