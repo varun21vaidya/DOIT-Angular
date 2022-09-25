@@ -9,22 +9,23 @@
 
 <div class="contain">
     <div class="add-todo-box">
-        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
-            <h2 class="title is-5">New Todo</h2>
+        <form (ngSubmit)="onFormSubmit(form)" [formGroup]="form">
+            <h2 class="title is-5">New To do</h2>
 
             <div class="field is-grouped">
                 <p class="control is-expanded">
                     <!-- ngModel has various form validations such as required , minlength and
                         its name takes input value which will be used in component
                         we will also asign an Id to it to take values of ngModel to handel erros with ngIf -->
-                    <input ngModel #todotextfield="ngModel" required minlength="2" name="text" class="input" type="text"
+                    <input formControlName="text" required minlength="2" name="text" class="input" type="text"
                         placeholder="Lets Add Your Task ...">
                 </p>
                 <p class="control">
-                    <button type="submit" class="button is-link special-button">
-                        <span class="material-icons">
+                    <button type="submit" id="buttonChange" class="button is-link special-button">
+                        <!-- <span class="material-icons">
                             add
-                        </span> ADD
+                        </span>  -->
+                        ADD
                     </button>
                 </p>
             </div>
@@ -49,7 +50,8 @@
 
             <!-- ItemEventCall was defined in todo-item component which was output event emitter which is called by onItemClick when an item is clicked-->
             <!-- so this ItemEventCall will initiate setCompleted function in todo html which will called in todo component which will toggle completed and incomplete state of task -->
-            <app-todo-item *ngFor="let todo of todos" [todo]="todo" (ItemEventCall)="setCompleted(todo)" (editEventCall)="editTask(todo)" (deleteEventCall)="deleteTask(todo)">
+            <app-todo-item *ngFor="let todo of todos" [todo]="todo" (ItemEventCall)="setCompleted(todo)"
+                (editEventCall)="editTask(todo)" (deleteEventCall)="deleteTask(todo)">
 
             </app-todo-item>
         </div>

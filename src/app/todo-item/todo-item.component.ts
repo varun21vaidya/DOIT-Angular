@@ -16,11 +16,7 @@ export class TodoItemComponent implements OnInit {
   // its just a signal that todo was clicked
   @Output() ItemEventCall: EventEmitter<void> = new EventEmitter();
 
-
-
   @Output() editEventCall: EventEmitter<void> = new EventEmitter();
-
-
 
   @Output() deleteEventCall: EventEmitter<void> = new EventEmitter();
 
@@ -28,23 +24,19 @@ export class TodoItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-
   // ItemEventCalled was defined in todo-item component which was output event emitter which is called by onItemClick when an item is clicked
-  // so this ItemEventCall will initiate setCompleted function in todo html which will called in todo component 
+  // so this ItemEventCall will initiate setCompleted function in todo html which will called in todo component
   // which will toggle completed and incomplete state of task
   onItemClick() {
     console.log('Todo was clicked');
     this.ItemEventCall.emit();
   }
 
-
-  onEditClick(){
-    this.editEventCall.emit()
-  }
-  
-
-  onDeleteClick(){
-    this.deleteEventCall.emit()
+  onEditClick() {
+    this.editEventCall.emit();
   }
 
+  onDeleteClick() {
+    this.deleteEventCall.emit();
+  }
 }
