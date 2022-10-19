@@ -1,5 +1,12 @@
 # TodoApp
 
+Demo:
+
+
+https://user-images.githubusercontent.com/65745841/196672167-90ad7c35-a66c-44ab-8984-6cf11bfc220e.mp4
+
+
+
 Check Out the Website Here: https://doit-todo-app.netlify.app/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
